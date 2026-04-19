@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-grid">
+    <section class="card vitals-card">
+        <div class="card-header">
+            <h2><span class="icon">📊</span> Real-Time Vitals</h2>
+            <div class="live-indicator"></div>
+        </div>
+        <div class="vitals-grid">
+            <div class="vital-item">
+                <span class="vital-label">Total Occupancy</span>
+                <span class="vital-value" id="val-occupancy">42,500 <span class="sub-val">/ 55,000</span></span>
+                <div class="progress-bar"><div class="progress-fill" id="prog-occupancy" style="width: 77%"></div></div>
+            </div>
+            <div class="vital-item">
+                <span class="vital-label">Crowd Noise</span>
+                <span class="vital-value" id="val-noise">82 dB</span>
+                <div class="progress-bar"><div class="progress-fill warning" id="prog-noise" style="width: 65%"></div></div>
+            </div>
+            <div class="vital-item">
+                <span class="vital-label">Avg Satisfaction</span>
+                <span class="vital-value" id="val-sentiment">94%</span>
+                <div class="progress-bar"><div class="progress-fill safe" id="prog-sentiment" style="width: 94%"></div></div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

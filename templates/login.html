@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Center Authentication</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="login-body">
+    <div class="login-container card">
+        <div class="login-header">
+            <div class="icon-large">🛡️</div>
+            <h2>Restricted Access</h2>
+            <p>Smart Stadium Command Center</p>
+        </div>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="login-flash">
+              {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="/" class="login-form" autocomplete="off">
+            <div class="input-group">
+                <label>Admin ID</label>
+                <input type="text" name="username" placeholder="Enter Operator ID (admin)" required autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label>Security Key</label>
+                <input type="password" name="password" placeholder="Pass (stadium2026)" required autocomplete="new-password">
+            </div>
+            
+            <button type="submit" class="action-btn safe login-btn" style="text-align: center; justify-content: center;">AUTHORIZE ACCESS</button>
+        </form>
+    </div>
+</body>
+</html>

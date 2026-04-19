@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container" id="main-container">
+    <header class="dashboard-header" style="position:relative;">
+        <a href="/logout" class="logout-link">🔒 Secure Logout</a>
+        <h1><span class="icon">🏟️</span> Smart Stadium Command Center</h1>
+        <p class="subtitle">AI-Powered Crowd Intelligence & Interactive Controls</p>
+    </header>
+
+    <main class="dashboard-grid">
+        <!-- Stadium Vitals -->
+        <section class="card vitals-card">
+            <div class="card-header">
+                <h2><span class="icon">📊</span> Real-Time Vitals</h2>
+                <div class="live-indicator"></div>
+            </div>
+            <div class="vitals-grid">
+                <div class="vital-item">
+                    <span class="vital-label">Total Occupancy</span>
+                    <span class="vital-value" id="val-occupancy">42,500 <span class="sub-val">/ 55,000</span></span>
+                    <div class="progress-bar"><div class="progress-fill" id="prog-occupancy" style="width: 77%"></div></div>
+                </div>
+                <div class="vital-item">
+                    <span class="vital-label">Crowd Noise</span>
+                    <span class="vital-value" id="val-noise">82 dB</span>
+                    <div class="progress-bar"><div class="progress-fill warning" id="prog-noise" style="width: 65%"></div></div>
+                </div>
+                <div class="vital-item">
+                    <span class="vital-label">Avg Satisfaction</span>
+                    <span class="vital-value" id="val-sentiment">94%</span>
+                    <div class="progress-bar"><div class="progress-fill safe" id="prog-sentiment" style="width: 94%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Queues -->
+        <section class="card queues-card">
+            <div class="card-header">
+                <h2><span class="icon">🍔</span> Active Queues</h2>
+                <div class="live-indicator" style="background-color: var(--crowd-low); box-shadow: 0 0 10px var(--crowd-low)"></div>
+            </div>
+            <div id="queues" class="queues-list">
+                <p class="placeholder">Loading AI predictions...</p>
+            </div>
+        </section>
+
+        <!-- Heatmap -->
+        <section class="card heatmap-card">
+            <div class="card-header">
+                <h2><span class="icon">🎯</span> Interactive Heatmap</h2>
+                <div class="live-indicator" style="background-color: var(--accent-blue); box-shadow: 0 0 10px var(--accent-blue)"></div>
+            </div>
+            <div id="heatmap" class="heatmap-grid">
+                <p class="placeholder">Generating geospatial map...</p>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="card alerts-card">
+            <div class="card-header">
+                <h2><span class="icon">🚨</span> Threat & System Alerts</h2>
+            </div>
+            <div id="alerts" class="alerts-feed">
+                <p class="placeholder">Awaiting secure socket events...</p>
+            </div>
+        </section>
+
+        <!-- Quick Actions (Hackathon Prototype) -->
+        <section class="card actions-card">
+            <div class="card-header">
+                <h2><span class="icon">⚡</span> Tactical Controls</h2>
+            </div>
+            <div class="actions-grid">
+                <button class="action-btn safe" onclick="simulateAction('Deploying cleaning staff to Restroom A', this)">🧹 Clean Restrooms</button>
+                <button class="action-btn warning" onclick="simulateAction('Dispatching security to Zone B', this)">🛡️ Deploy Security</button>
+                <button class="action-btn danger" onclick="triggerEvacuation(this)">⚠️ INITIATE EVACUATION</button>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Evacuation Overlay -->
+<div id="evac-overlay" class="evac-overlay hidden">
+    <div class="evac-content">
+        <h1>🚨 EMERGENCY EVACUATION 🚨</h1>
+        <p>All exits have been forced open. Commencing crowd rerouting via digital signage.</p>
+        <button onclick="cancelEvacuation()" class="action-btn safe" style="margin-top: 20px; margin-inline: auto;">Cancel Evacuation</button>
+    </div>
+</div>
+
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+<script src="/static/js/script.js"></script>
+{% endblock %}

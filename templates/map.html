@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-grid map-page">
+    <section class="card heatmap-card large-card">
+        <div class="card-header">
+            <h2><span class="icon">🎯</span> Interactive 3D Stadium Map</h2>
+            <div class="live-indicator" style="background-color: var(--accent-blue); box-shadow: 0 0 10px var(--accent-blue)"></div>
+        </div>
+        <div id="heatmap" class="heatmap-grid" style="margin-top: 50px;">
+            <p class="placeholder">Generating geospatial map...</p>
+        </div>
+    </section>
+
+    <!-- Live Queues beside the map -->
+    <section class="card queues-card small-card">
+        <div class="card-header">
+            <h2><span class="icon">🍔</span> Active Queues</h2>
+            <div class="live-indicator" style="background-color: var(--crowd-low); box-shadow: 0 0 10px var(--crowd-low)"></div>
+        </div>
+        <div id="queues" class="queues-list">
+            <p class="placeholder">Loading AI predictions...</p>
+        </div>
+    </section>
+</div>
+{% endblock %}

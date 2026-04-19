@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-grid controls-page">
+    <section class="card actions-card small-card">
+        <div class="card-header">
+            <h2><span class="icon">⚡</span> Tactical Controls</h2>
+        </div>
+        <div class="actions-grid">
+            <button class="action-btn safe" onclick="simulateAction('Deploying cleaning staff to Restroom A', this)">🧹 Clean Restrooms</button>
+            <button class="action-btn warning" onclick="simulateAction('Dispatching security to Zone B', this)">🛡️ Deploy Security</button>
+            <button class="action-btn danger" onclick="triggerEvacuation(this)">⚠️ INITIATE EVACUATION</button>
+        </div>
+    </section>
+
+    <section class="card alerts-card large-card">
+        <div class="card-header">
+            <h2><span class="icon">🚨</span> Threat & System Alerts</h2>
+        </div>
+        <div id="alerts" class="alerts-feed flex-column">
+            <p class="placeholder">Awaiting secure socket events...</p>
+        </div>
+    </section>
+</div>
+{% endblock %}

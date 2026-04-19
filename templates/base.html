@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Stadium Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="dashboard-body">
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="icon-large-sidebar">🏟️</span>
+                <h2>Stadium AI</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/overview" class="nav-item {% if active_page == 'overview' %}active{% endif %}">
+                    <span class="icon">📊</span> Overview
+                </a>
+                <a href="/map" class="nav-item {% if active_page == 'map' %}active{% endif %}">
+                    <span class="icon">🎯</span> 3D Map
+                </a>
+                <a href="/controls" class="nav-item {% if active_page == 'controls' %}active{% endif %}">
+                    <span class="icon">⚡</span> Controls
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/logout" class="logout-btn">🔒 Secure Logout</a>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <h1>Command Center</h1>
+                    <p class="subtitle">AI-Powered Crowd Intelligence & Overview</p>
+                </div>
+                <div class="user-profile">
+                    <span class="user-avatar">AD</span>
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-role">System Operator</span>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="content-area">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <!-- Evacuation Overlay -->
+    <div id="evac-overlay" class="evac-overlay hidden">
+        <div class="evac-content">
+            <h1>🚨 EMERGENCY EVACUATION 🚨</h1>
+            <p>All exits have been forced open. Commencing crowd rerouting via digital signage.</p>
+            <button onclick="cancelEvacuation()" class="action-btn safe" style="margin-top: 20px; margin-inline: auto;">Cancel Evacuation</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
